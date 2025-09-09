@@ -34,17 +34,16 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-        <div className="md:flex items-center gap-4 hidden">
+        <div className="flex items-center gap-4">
           <img src={assets.search_icon} alt="" />
           <img src={assets.basket_icon} alt="" />
           <Button
             name="Sign in"
-            className="px-6 py-2 rounded-full border border-gray-500 text-gray-500
+            className="hidden md:flex px-6 py-2 rounded-full border border-gray-500 text-gray-500
             hover:border-orange-400 hover:bg-orange-300 hover:text-white cursor-pointer
             "
           />
-        </div>
-        {
+          {
           <button
             onClick={() => setOpenHamMenu(true)}
             className={`md:hidden cursor-pointer hover:scale-105 ${
@@ -54,11 +53,13 @@ const Navbar = () => {
             <img src={burger_icon} className="w-12" alt="" />
           </button>
         }
+        </div>
+        
         {openHamMenu && (
-          <div className="fixed top-0 right-0 w-64 px-8 py-4 gap-4 flex flex-col md:hidden z-20 text-gray-500 bg-gray-100 shadow-lg">
+          <div className="fixed top-0 right-0 w-64 px-8 py-6 gap-4 flex flex-col md:hidden z-20 text-gray-500 bg-gray-100 shadow-lg">
             <button
               onClick={() => setOpenHamMenu(false)}
-              className="absolute right-8 top-0 cursor-pointer hover:scale-110 hover:text-gray-900"
+              className="absolute right-8 top-2 cursor-pointer hover:scale-110 hover:text-gray-900"
             >
               x
             </button>
@@ -75,7 +76,9 @@ const Navbar = () => {
               >
                 {link.label}
               </Link>
-            ))}
+            ))
+            }
+            <Link>Sign-up</Link>
           </div>
         )}
       </div>
