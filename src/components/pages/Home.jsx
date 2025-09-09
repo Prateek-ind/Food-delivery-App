@@ -4,6 +4,7 @@ import Button from "../Button";
 import ExploreMenu from "./ExploreMenu";
 import Header from "../Header";
 import FoodDisplay from "./FoodDisplay";
+import Footer from "./Footer";
 
 const Home = () => {
   const [category, setCategory] = useState("All");
@@ -15,6 +16,7 @@ const Home = () => {
       
       <ExploreMenu category={category} setCategory={setCategory} />
       <FoodDisplay category={category}/>
+      <Footer/>
     </div>
   );
 };
