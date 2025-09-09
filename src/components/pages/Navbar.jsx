@@ -44,15 +44,16 @@ const Navbar = () => {
             "
           />
         </div>
-        {!openHamMenu && (
-          <button onClick={() => setOpenHamMenu(true)}>
-            <img
-              src={burger_icon}
-              className="w-12 block md:hidden cursor-pointer hover:scale-105"
-              alt=""
-            />
+        {
+          <button
+            onClick={() => setOpenHamMenu(true)}
+            className={`md:hidden cursor-pointer hover:scale-105 ${
+              openHamMenu ? "hidden" : "block"
+            }`}
+          >
+            <img src={burger_icon} className="w-12" alt="" />
           </button>
-        )}
+        }
         {openHamMenu && (
           <div className="fixed top-0 right-0 w-64 px-8 py-4 gap-4 flex flex-col md:hidden z-20 text-gray-500 bg-gray-100 shadow-lg">
             <button
