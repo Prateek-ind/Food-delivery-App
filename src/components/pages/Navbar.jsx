@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 import burger_icon from "../../../public/burger_icon.png";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({onOpenModal}) => {
   const [openHamMenu, setOpenHamMenu] = useState(false);
 
   const links = [
@@ -38,23 +38,25 @@ const Navbar = () => {
           <img src={assets.search_icon} alt="" />
           <img src={assets.basket_icon} alt="" />
           <Button
+            onClick={onOpenModal}
             name="Sign in"
             className="hidden md:flex px-6 py-2 rounded-full border border-gray-500 text-gray-500
             hover:border-orange-400 hover:bg-orange-300 hover:text-white cursor-pointer
             "
           />
+
           {
-          <button
-            onClick={() => setOpenHamMenu(true)}
-            className={`md:hidden cursor-pointer hover:scale-105 ${
-              openHamMenu ? "hidden" : "block"
-            }`}
-          >
-            <img src={burger_icon} className="w-12" alt="" />
-          </button>
-        }
+            <button
+              onClick={() => setOpenHamMenu(true)}
+              className={`md:hidden cursor-pointer hover:scale-105 ${
+                openHamMenu ? "hidden" : "block"
+              }`}
+            >
+              <img src={burger_icon} className="w-12" alt="" />
+            </button>
+          }
         </div>
-        
+
         {openHamMenu && (
           <div className="fixed top-0 right-0 w-64 px-8 py-6 gap-4 flex flex-col md:hidden z-20 text-gray-500 bg-gray-100 shadow-lg">
             <button
@@ -76,9 +78,8 @@ const Navbar = () => {
               >
                 {link.label}
               </Link>
-            ))
-            }
-            <Link>Sign-up</Link>
+            ))}
+            <Link>Sign-In</Link>
           </div>
         )}
       </div>

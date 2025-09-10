@@ -1,21 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/pages/Navbar";
 import Home from "./components/pages/Home";
 import { Route, Routes } from "react-router-dom";
 import Cart from "./components/pages/Cart";
 import PlaceOrder from "./components/pages/PlaceOrder";
 import Footer from "./components/pages/Footer";
+import SignInForm from "./components/pages/SignInForm";
+import Modal from "./components/pages/Modal";
 
 const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <main id="navbar" className="">
-      <Navbar />
+      <Navbar onOpenModal={() => setIsModalOpen(true)} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<PlaceOrder />} />
       </Routes>
-      <Footer/>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <SignInForm />
+      </Modal>
+      <Footer />
     </main>
   );
 };

@@ -4,7 +4,7 @@ const Modal = ({ isOpen, onClose, children }) => {
   const modal = useRef();
 
   useEffect(() => {
-    const handleClickOutside = () => {
+    const handleClickOutside = (e) => {
       if (modal.current && !modal.current.contains(e.target)) {
         onClose();
       }
@@ -24,7 +24,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-      <div ref={modal} className="bg-white p-6 rounded shadow-lg relative w-96">
+      <div ref={modal} className="bg-white p-6 rounded shadow-lg relative w-96 z-50">
         <button className="absolute top-2 right-2 text-gray-500 hover:text-gray-800">&times</button>
         {children}
       </div>
