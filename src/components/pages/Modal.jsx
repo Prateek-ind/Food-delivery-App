@@ -31,9 +31,9 @@ const Modal = ({ isOpen, onClose, children }) => {
       >
         <Button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+          className="absolute top-2 right-4 text-gray-500 hover:text-gray-800 cursor-pointer"
         >
-          close
+          X
         </Button>
         {children}
       </div>
