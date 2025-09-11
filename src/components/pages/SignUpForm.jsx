@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import Input from "../Input";
-import  Button  from "../Button";
+import Button from "../Button";
 
 const SignUpForm = forwardRef(({ setIsLoggedIn }, ref) => {
   function handleSubmit(e) {
@@ -40,21 +40,26 @@ const SignUpForm = forwardRef(({ setIsLoggedIn }, ref) => {
           placeholder="Confirm Password"
         />
       </div>
+      <div className="flex gap-2 items-center">
+        <input type="checkbox" required />
+        <p className="text-xs">
+          By continuing, I agree to the terms of use and privacy policy.
+        </p>
+      </div>
       <Button
         type="submit"
-        name="Log-In"
+        name="Create Account"
         className="w-fit rounded-xl mt-2 text-white px-4 py-2 bg-orange-500 hover:bg-orange-700 hover:scale-103 cursor-pointer"
-      >
-        Sign Up
-      </Button>
+      />
+      
       <p className="py-2 text-gray-700 text-sm">
-        If you are already registered please{" "}  
-         {
-           <a
+        If you are already registered please{" "}
+        {
+          <a
             className="text-orange-500 hover:font-bold cursor-pointer"
             onClick={() => setIsLoggedIn(true)}
           >
-             Sign In
+            Sign In
           </a>
         }{" "}
         here
