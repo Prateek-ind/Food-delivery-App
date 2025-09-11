@@ -12,10 +12,11 @@ const FoodDisplay = ({ category }) => {
         {food_list.map((item, i) => {
           console.log(category, item.category);
           if (category === "All" || category === item.category) {
+            console.log(item._id);
             return (
               <FoodItem
                 key={i}
-                id={i}
+                id={item._id}
                 name={item.name}
                 image={item.image}
                 price={item.price}
