@@ -1,5 +1,7 @@
 import { assets } from "../../assets/frontend_assets/assets";
 import Button from "./Button";
+import { Link } from "react-scroll";
+
 
 const Header = () => {
   return (
@@ -20,11 +22,21 @@ const Header = () => {
               main mission is to satisfy your cravings and elevate your dining
               experience, one delicious meal at a time.
             </p>
-            <Button
-              className="px-6 py-2 max-w-36 rounded-full border border-gray-300
+            <Link
+              
+              to="menu"
+              smooth={true}
+              spy={true}
+              offset={-80}
+              duration={500}
+             
+            >
+              <Button
+                className="px-6 py-2 max-w-36 rounded-full border border-gray-300
               text-gray-500 bg-gray-100 cursor-pointer hover:scale-103"
-              name="View Menu"
-            />
+                name="View Menu"
+              />
+            </Link>
           </div>
         </div>
       </div>
