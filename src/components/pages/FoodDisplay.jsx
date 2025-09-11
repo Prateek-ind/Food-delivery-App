@@ -14,7 +14,7 @@ const FoodDisplay = ({ category }) => {
           if (category === "All" || category === item.category) {
             return (
               <FoodItem
-                key={item.id}
+                key={i}
                 id={i}
                 name={item.name}
                 image={item.image}
