@@ -22,7 +22,7 @@ const SignInForm = forwardRef(({ props, setIsLoggedIn }, ref) => {
         className="w-fit rounded-xl mt-2 text-white px-4 py-2 bg-orange-500 hover:bg-orange-700 hover:scale-103 cursor-pointer"
       />
       <p className="py-2 text-gray-700 text-sm">
-        If you are not registered please 
+        If you are not registered please{" "}  
         {
           <a
             className="text-orange-500 hover:font-bold cursor-pointer"

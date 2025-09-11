@@ -48,9 +48,9 @@ const SignUpForm = forwardRef(({ setIsLoggedIn }, ref) => {
         Sign Up
       </Button>
       <p className="py-2 text-gray-700 text-sm">
-        If you are already registered please  
-        {
-          <a
+        If you are already registered please{" "}  
+         {
+           <a
             className="text-orange-500 hover:font-bold cursor-pointer"
             onClick={() => setIsLoggedIn(true)}
           >
