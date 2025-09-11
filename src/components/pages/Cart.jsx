@@ -3,6 +3,12 @@ import { StoreContext } from "../../context/StoreContext";
 
 const Cart = () => {
   const { cartItems, food_list, removeFromCart } = useContext(StoreContext);
+
+  const formattedUSD = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   return (
     <div className="pt-20 mt-8">
       <div className="">
@@ -19,13 +25,21 @@ const Cart = () => {
         {food_list.map((item, i) => {
           if (cartItems[item._id] > 0) {
             return (
-              <div key={i} className="grid grid-cols-6 items-center justify-center text-center">
-                <img src={item.image} className="w-24 p-4 " alt="" />
+              <div
+                key={i}
+                className="grid grid-cols-6 items-center justify-center text-center"
+              >
+                <img src={item.image} className="w-24 p-2 mx-auto " alt="" />
                 <p>{item.name}</p>
-                <p>{item.price}</p>
+                <p>{formattedUSD.format(item.price)}</p>
                 <p>{cartItems[item._id]}</p>
-                <p>{item.price*(cartItems[item._id])}</p>
-                <button onClick={()=>removeFromCart(item._id)}>X</button>
+                <p>{formattedUSD.format(item.price * cartItems[item._id])}</p>
+                <button
+                  onClick={() => removeFromCart(item._id)}
+                  className="font-bold text-orange-500 hover:scale-105 cursor-pointer"
+                >
+                  X
+                </button>
               </div>
             );
           }
