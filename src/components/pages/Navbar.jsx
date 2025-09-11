@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 import burger_icon from "../../../public/burger_icon.png";
 import { useState } from "react";
 
-const Navbar = ({onOpenModal}) => {
+const Navbar = ({ onOpenModal }) => {
   const [openHamMenu, setOpenHamMenu] = useState(false);
 
   const links = [
@@ -79,7 +79,13 @@ const Navbar = ({onOpenModal}) => {
                 {link.label}
               </Link>
             ))}
-            <Link>Sign-In</Link>
+            <Link
+              onClick={() => onOpenModal(setOpenHamMenu(false))}
+              className="cursor-pointer pb-1 hover:text-gray-700 hover:border-b hover:border-b-gray-400"
+              activeClass="border-b-2 text-orange-500 border-b-orange-400"
+            >
+              Sign-In
+            </Link>
           </div>
         )}
       </div>
