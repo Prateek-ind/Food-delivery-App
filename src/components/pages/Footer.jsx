@@ -3,7 +3,10 @@ import { assets } from "../../../assets/frontend_assets/assets";
 
 const Footer = () => {
   return (
-    <footer id="contact-us" className="bg-neutral-900 text-gray-200 p-8 mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg">
+    <footer
+      id="contact-us"
+      className="bg-neutral-900 text-gray-200 p-8 mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg"
+    >
       <div className="w-full flex justify-between">
         <div className="max-w-sm">
           <img src={assets.logo} className="py-2" alt="" />
@@ -36,8 +39,10 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <hr className="my-4"/>
-      <p className="text-center">Copyright 2024 © Tomato.com-All Rights Reserved.</p>
+      <hr className="my-4" />
+      <p className="text-center">
+        Copyright 2024 © Tomato.com-All Rights Reserved.
+      </p>
     </footer>
   );
 };
