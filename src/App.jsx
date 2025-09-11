@@ -7,9 +7,11 @@ import PlaceOrder from "./components/pages/PlaceOrder";
 import Footer from "./components/pages/Footer";
 import SignInForm from "./components/pages/SignInForm";
 import Modal from "./components/pages/Modal";
+import SignUpForm from "./components/pages/SignUpForm";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   return (
     <main id="navbar" className="">
       <Navbar onOpenModal={() => setIsModalOpen(true)} />
@@ -19,7 +21,11 @@ const App = () => {
         <Route path="/order" element={<PlaceOrder />} />
       </Routes>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <SignInForm />
+        {isLoggedIn ? (
+          <SignInForm setIsLoggedIn={setIsLoggedIn} />
+        ) : (
+          <SignUpForm setIsLoggedIn={setIsLoggedIn}/>
+        )}
       </Modal>
       <Footer />
     </main>

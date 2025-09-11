@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Button from "../Button";
 
 const Modal = ({ isOpen, onClose, children }) => {
   const modal = useRef();
@@ -24,8 +25,16 @@ const Modal = ({ isOpen, onClose, children }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-      <div ref={modal} className="bg-white p-6 rounded shadow-lg relative w-96 z-50">
-        <button className="absolute top-2 right-2 text-gray-500 hover:text-gray-800">&times</button>
+      <div
+        ref={modal}
+        className="bg-white p-6 rounded shadow-lg relative z-50"
+      >
+        <Button
+          onClick={onClose}
+          className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+        >
+          close
+        </Button>
         {children}
       </div>
     </div>
