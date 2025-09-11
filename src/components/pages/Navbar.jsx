@@ -17,7 +17,9 @@ const Navbar = ({ onOpenModal }) => {
   return (
     <div className="h-[80px] fixed top-0 left-0 w-full shadow-md z-30 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between ">
-        <img src={assets.logo} className="w-28" alt="app-logo" />
+        <Link to="home" smooth={true} spy={true} offset={-80} duration={500}>
+          <img src={assets.logo} className="w-28 cursor-pointer" alt="app-logo" />
+        </Link>
         <div className=" gap-4 hidden md:flex text-gray-500">
           {links.map((link) => (
             <Link
