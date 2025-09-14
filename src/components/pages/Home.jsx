@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     
-      <div className="mt-8 pt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="mt-8 pt-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
         <Header />
       
       <ExploreMenu category={category} setCategory={setCategory} />

@@ -24,7 +24,7 @@ const Navbar = ({ onOpenModal }) => {
 
   return (
     <div className="h-[80px] fixed top-0 left-0 w-full shadow-md z-30 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between ">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between ">
         <RouterLink to="/">
           <img
             src={assets.logo}

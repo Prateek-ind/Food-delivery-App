@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer
       id="contact-us"
-      className="bg-neutral-900 text-gray-200 p-8 mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg"
+      className="bg-neutral-900 text-gray-200 p-8 mt-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg"
     >
       <div className="w-full flex justify-between">
         <div className="max-w-sm">
