@@ -1,7 +1,7 @@
 import { assets } from "../../../assets/frontend_assets/assets";
 import Button from "../Button";
 import { Link as ScrollLink } from "react-scroll";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import burger_icon from "../../../public/burger_icon.png";
 import { useContext, useState } from "react";
 import { StoreContext } from "../../context/StoreContext";
@@ -17,6 +17,9 @@ const Navbar = ({ onOpenModal }) => {
     { id: "contact-us", label: "contact-us" },
   ];
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   console.log(cartItems);
 
   return (
@@ -30,27 +33,55 @@ const Navbar = ({ onOpenModal }) => {
           />
         </RouterLink>
         <div className=" gap-4 hidden md:flex text-gray-500">
-          {links.map((link) => (
-            <ScrollLink
-              key={link.id}
-              to={link.id}
-              smooth={true}
-              spy={true}
-              offset={-80}
-              duration={500}
-              className="cursor-pointer pb-1 hover:text-gray-700 hover:border-b hover:border-b-gray-400"
-              activeClass="border-b-2 text-orange-500 border-b-orange-400"
-            >
-              {link.label}
-            </ScrollLink>
-          ))}
+          {links.map((link) => {
+            if (link.id === "home") {
+              return location.pathname === "/" ? (
+                <ScrollLink
+                  key={link.id}
+                  to={link.id}
+                  smooth={true}
+                  spy={true}
+                  offset={-80}
+                  duration={500}
+                  className="cursor-pointer pb-1 hover:text-gray-700 hover:border-b hover:border-b-gray-400"
+                  activeClass="border-b-2 text-orange-500 border-b-orange-400"
+                >
+                  {link.label}
+                </ScrollLink>
+              ) : (
+                <RouterLink
+                  key={link.id}
+                  to="/"
+                  className="cursor-pointer pb-1 hover:text-gray-700 hover:border-b hover:border-b-gray-400"
+                >
+                  {link.label}
+                </RouterLink>
+              );
+            }
+            return (
+              <ScrollLink
+                key={link.id}
+                to={link.id}
+                smooth={true}
+                spy={true}
+                offset={-80}
+                duration={500}
+                className="cursor-pointer pb-1 hover:text-gray-700 hover:border-b hover:border-b-gray-400"
+                activeClass="border-b-2 text-orange-500 border-b-orange-400"
+              >
+                {link.label}
+              </ScrollLink>
+            );
+          })}
         </div>
         <div className="flex items-center gap-4">
-          <img src={assets.search_icon} alt=""  />
+          <img src={assets.search_icon} alt="" />
           <RouterLink to="/cart" className="relative">
-            <img src={assets.basket_icon} alt="" className="w-8 h-8"/>
+            <img src={assets.basket_icon} alt="" className="w-8 h-8" />
             {Object.values(cartItems).reduce((a, b) => a + b, 0) > 0 && (
-              <span className="absolute w-5 -top-1 -right-2 bg-orange-500 text-white text-center text-sm font-bold rounded-full px-1">{Object.values(cartItems).reduce((a, b) => a + b, 0)}</span>
+              <span className="absolute w-5 -top-1 -right-2 bg-orange-500 text-white text-center text-sm font-bold rounded-full px-1">
+                {Object.values(cartItems).reduce((a, b) => a + b, 0)}
+              </span>
             )}
           </RouterLink>
           <Button
