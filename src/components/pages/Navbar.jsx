@@ -1,10 +1,13 @@
 import { assets } from "../../../assets/frontend_assets/assets";
 import Button from "../Button";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 import burger_icon from "../../../public/burger_icon.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { StoreContext } from "../../context/StoreContext";
 
 const Navbar = ({ onOpenModal }) => {
+  const { cartItems } = useContext(StoreContext);
   const [openHamMenu, setOpenHamMenu] = useState(false);
 
   const links = [
@@ -14,15 +17,21 @@ const Navbar = ({ onOpenModal }) => {
     { id: "contact-us", label: "contact-us" },
   ];
 
+  console.log(cartItems);
+
   return (
     <div className="h-[80px] fixed top-0 left-0 w-full shadow-md z-30 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between ">
-        <Link to="home" smooth={true} spy={true} offset={-80} duration={500}>
-          <img src={assets.logo} className="w-28 cursor-pointer" alt="app-logo" />
-        </Link>
+        <RouterLink to="/">
+          <img
+            src={assets.logo}
+            className="w-28 cursor-pointer"
+            alt="app-logo"
+          />
+        </RouterLink>
         <div className=" gap-4 hidden md:flex text-gray-500">
           {links.map((link) => (
-            <Link
+            <ScrollLink
               key={link.id}
               to={link.id}
               smooth={true}
@@ -33,12 +42,17 @@ const Navbar = ({ onOpenModal }) => {
               activeClass="border-b-2 text-orange-500 border-b-orange-400"
             >
               {link.label}
-            </Link>
+            </ScrollLink>
           ))}
         </div>
         <div className="flex items-center gap-4">
-          <img src={assets.search_icon} alt="" />
-          <img src={assets.basket_icon} alt="" />
+          <img src={assets.search_icon} alt=""  />
+          <RouterLink to="/cart" className="relative">
+            <img src={assets.basket_icon} alt="" className="w-8 h-8"/>
+            {Object.values(cartItems).reduce((a, b) => a + b, 0) > 0 && (
+              <span className="absolute w-5 -top-1 -right-2 bg-orange-500 text-white text-center text-sm font-bold rounded-full px-1">{Object.values(cartItems).reduce((a, b) => a + b, 0)}</span>
+            )}
+          </RouterLink>
           <Button
             onClick={onOpenModal}
             name="Sign in"
@@ -68,7 +82,7 @@ const Navbar = ({ onOpenModal }) => {
               x
             </button>
             {links.map((link) => (
-              <Link
+              <ScrollLink
                 key={link.id}
                 to={link.id}
                 smooth={true}
@@ -79,15 +93,15 @@ const Navbar = ({ onOpenModal }) => {
                 activeClass="border-b-2 text-orange-500 border-b-orange-400"
               >
                 {link.label}
-              </Link>
+              </ScrollLink>
             ))}
-            <Link
+            <ScrollLink
               onClick={() => onOpenModal(setOpenHamMenu(false))}
               className="cursor-pointer pb-1 hover:text-gray-700 hover:border-b hover:border-b-gray-400"
               activeClass="border-b-2 text-orange-500 border-b-orange-400"
             >
               Sign-In
-            </Link>
+            </ScrollLink>
           </div>
         )}
       </div>
