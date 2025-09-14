@@ -8,23 +8,23 @@ const Footer = () => {
       className="bg-neutral-900 text-gray-200 p-8 mt-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg"
     >
       <div className="w-full flex justify-between">
-        <div className="max-w-sm">
-          <img src={assets.logo} className="py-2" alt="" />
-          <p className="py-2">
+        <div className="w-48 sm:w-96">
+          <img src={assets.logo} className="py-2 w-24 sm:w-48" alt="" />
+          <p className="py-2 text-xs sm:text-sm">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi
             saepe quis rerum similique maxime iste illum, animi sapiente,
             doloribus dolores voluptates reiciendis sequi, facere quia eius! Ab,
             velit sint? Necessitatibus.
           </p>
-          <div className="flex gap-2 mt-2">
+          <div className="flex gap-2 mt-2 w-8 sm:w-full">
             <img src={assets.facebook_icon} alt="" />
             <img src={assets.twitter_icon} alt="" />
             <img src={assets.linkedin_icon} alt="" />
           </div>
         </div>
         <div>
-          <h3 className="text-xl font-bold">Company</h3>
-          <ul className="py-4">
+          <h3 className="sm:text-xl text-md font-semibold sm:font-bold ">Company</h3>
+          <ul className="py-4 text-xs sm:text-sm">
             <li className="py-1">Home</li>
             <li className="py-1">About Us</li>
             <li className="py-1">Delivery</li>
@@ -32,15 +32,15 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h3 className="text-xl font-bold">Get in Touch</h3>
-          <ul className="py-4">
+          <h3 className="sm:text-xl text-md font-semibold sm:font-bold">Get in Touch</h3>
+          <ul className="py-4 text-xs sm:text-sm">
             <li className="py-1">+1-121-2123232</li>
             <li className="py-1">contact@tomato.com</li>
           </ul>
         </div>
       </div>
       <hr className="my-4" />
-      <p className="text-center">
+      <p className="text-center text-xs sm:text-sm">
         Copyright 2024 © Tomato.com-All Rights Reserved.
       </p>
     </footer>
