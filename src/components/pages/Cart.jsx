@@ -2,21 +2,18 @@ import React, { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import Button from "../Button";
 import Input from "../Input";
+import { Link as RouterLink } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getCartTotal } =
+    useContext(StoreContext);
 
   const formattedUSD = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
 
-  const subtotal = food_list.reduce((acc, item) => {
-    if (cartItems[item._id] > 0) {
-      return acc + cartItems[item._id] * item.price;
-    }
-    return acc;
-  }, 0);
+  const subtotal = getCartTotal();
 
   const deliveryFee = 2;
   const total = subtotal + deliveryFee;
@@ -56,7 +53,7 @@ const Cart = () => {
                     </p>
                     <button
                       onClick={() => removeFromCart(item._id)}
-                      className="font-bold text-orange-500 hover:scale-105 cursor-pointer"
+                      className="font-bold text-red-500 hover:scale-105 cursor-pointer"
                     >
                       X
                     </button>
@@ -83,18 +80,20 @@ const Cart = () => {
                 <p className="font-bold">Total</p>
                 <p>{formattedUSD.format(total)}</p>
               </div>
-              <Button
-                name="Proceed to Checkout"
-                className="text-white bg-orange-500 px-4 py-2 rounded-lg shadow cursor-pointer hover:scale-105 hover:bg-orange-700"
-              />
+              <RouterLink
+                to="/order"
+                className="text-white bg-orange-500 px-4 py-1 rounded-lg shadow cursor-pointer hover:scale-105 hover:bg-orange-700 flex items-center justify-center"
+              >
+                PROCEED TO CHECKOUT
+              </RouterLink>
             </div>
             <div className="flex flex-col  gap-4 py-2">
               <p>If you have a promo code, enter here.</p>
               <div className="flex gap-8">
-                <Input />
+                <Input placeHolder="Promo Code" />
                 <Button
                   name="Submit"
-                  className="text-white bg-orange-500 px-4 py-2 rounded-lg shadow cursor-pointer hover:scale-105 hover:bg-orange-700"
+                  className="text-white bg-gray-950 px-4 py-1 rounded-lg shadow cursor-pointer hover:scale-105 hover:bg-orange-700"
                 />
               </div>
             </div>
