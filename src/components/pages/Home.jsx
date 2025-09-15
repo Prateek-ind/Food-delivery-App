@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { assets } from "../../../assets/frontend_assets/assets";
-import Button from "../Button";
 import ExploreMenu from "./ExploreMenu";
 import Header from "../Header";
 import FoodDisplay from "./FoodDisplay";
-import Footer from "./Footer";
+
 import AppDownload from "./AppDownload";
 
 const Home = () => {

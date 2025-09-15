@@ -7,9 +7,9 @@ export const StoreContext = createContext(null);
 export const StoreContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState({});
 
-  useEffect(()=>{
-    console.log(cartItems)
-  }, [cartItems])
+  useEffect(() => {
+    console.log(cartItems);
+  }, [cartItems]);
 
   const addToCart = (itemId) => {
     if (!cartItems[itemId]) {
@@ -20,19 +20,31 @@ export const StoreContextProvider = ({ children }) => {
   };
 
   const removeFromCart = (itemId) => {
-  setCartItems((prev) => {
-    if (!prev[itemId]) return prev;
+    setCartItems((prev) => {
+      if (!prev[itemId]) return prev;
 
-    if (prev[itemId] === 1) {
-      const updatedCart = { ...prev };
-      delete updatedCart[itemId];
-      return updatedCart;
+      if (prev[itemId] === 1) {
+        const updatedCart = { ...prev };
+        delete updatedCart[itemId];
+        return updatedCart;
+      }
+
+      return { ...prev, [itemId]: prev[itemId] - 1 };
+    });
+  };
+
+  const getCartTotal = () => {
+    let totalAmount = 0;
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let itemInfo = food_list.find((product) => product._id === item);
+        if (itemInfo) {
+          totalAmount += itemInfo.price * cartItems[item];
+        }
+      }
     }
-
-    return { ...prev, [itemId]: prev[itemId] - 1 };
-  });
-};
-
+    return totalAmount;
+  };
 
   const contextValue = {
     food_list,
@@ -40,6 +52,7 @@ export const StoreContextProvider = ({ children }) => {
     setCartItems,
     addToCart,
     removeFromCart,
+    getCartTotal,
   };
   return (
     <StoreContext.Provider value={contextValue}>
