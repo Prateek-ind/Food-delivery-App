@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./components/pages/Navbar";
 import Home from "./components/pages/Home";
 import { Route, Routes } from "react-router-dom";
-import Cart from "./components/pages/Cart";
+import Cart from "./components/pages/Cart/Cart";
 import Checkout from "./components/pages/Checkout";
 import Footer from "./components/pages/Footer";
 import SignInForm from "./components/pages/SignInForm";
@@ -24,7 +24,7 @@ const App = () => {
         {isLoggedIn ? (
           <SignInForm setIsLoggedIn={setIsLoggedIn} />
         ) : (
-          <SignUpForm setIsLoggedIn={setIsLoggedIn}/>
+          <SignUpForm setIsLoggedIn={setIsLoggedIn} />
         )}
       </Modal>
       <Footer />

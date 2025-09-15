@@ -4,25 +4,25 @@ import CartTotal from "./Cart/CartTotal";
 
 const Checkout = () => {
   return (
-    <div>
-      <form>
-        <div>
-          <Input />
-          <Input />
+    <div className="pt-20 mt-24 w-full max-w-6xl mx-auto flex px-8 justify-between">
+      <form className="flex  flex-col gap-2">
+        <div className="flex gap-2">
+          <Input  placeHolder="First Name"/>
+          <Input  placeHolder="Last Name"/>
         </div>
-        <Input />
-        <Input />
-        <div>
-          <Input />
-          <Input />
+        <Input  placeHolder="Email address"/>
+        <Input placeHolder="Street"/>
+        <div className="flex gap-2">
+          <Input placeHolder="City"/>
+          <Input placeHolder="State"/>
         </div>
-        <div>
-          <Input />
-          <Input />
+        <div className="flex gap-2">
+          <Input placeHolder="Pin Code"/>
+          <Input placeHolder="Country"/>
         </div>
-        <Input />
+        <Input placeHolder="Phone"/>
       </form>
-      <CartTotal />
+      <CartTotal proceedTo="PROCEED TO PAYMENT"/>
     </div>
   );
 };
