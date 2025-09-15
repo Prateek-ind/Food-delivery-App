@@ -64,15 +64,17 @@ const Cart = () => {
               );
             }
           })}
-          <CartTotal />
-          <div className="flex flex-col  gap-4 py-2">
-            <p>If you have a promo code, enter here.</p>
-            <div className="flex gap-8">
-              <Input placeHolder="Promo Code" />
-              <Button
-                name="Submit"
-                className="text-white bg-gray-950 px-4 py-1 rounded-lg shadow cursor-pointer hover:scale-105 hover:bg-orange-700"
-              />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 py-8 mt-4 justify-between">
+            <CartTotal proceedTo="PROCEED TO CHECKOUT" />
+            <div className="flex flex-col  gap-4 py-2">
+              <p>If you have a promo code, enter here.</p>
+              <div className="flex gap-8">
+                <Input placeHolder="Promo Code" />
+                <Button
+                  name="Submit"
+                  className="text-white bg-gray-950 px-4 py-1 rounded-lg shadow cursor-pointer hover:scale-105 hover:bg-orange-700"
+                />
+              </div>
             </div>
           </div>
         </div>
