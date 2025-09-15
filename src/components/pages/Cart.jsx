@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import Button from "../Button";
 import Input from "../Input";
-import { Link as RouterLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, food_list, removeFromCart, getCartTotal } =
@@ -13,6 +13,7 @@ const Cart = () => {
     currency: "USD",
   });
 
+  const navigate = useNavigate();
   const subtotal = getCartTotal();
 
   const deliveryFee = 2;
@@ -80,12 +81,13 @@ const Cart = () => {
                 <p className="font-bold">Total</p>
                 <p>{formattedUSD.format(total)}</p>
               </div>
-              <RouterLink
-                to="/order"
-                className="text-white bg-orange-500 px-4 py-1 rounded-lg shadow cursor-pointer hover:scale-105 hover:bg-orange-700 flex items-center justify-center"
+              <Button
+                onClick={() => navigate("/order")}
+                className="text-white bg-orange-500 px-4 py-2 rounded-lg shadow cursor-pointer
+               hover:scale-105 hover:bg-orange-700 flex items-center justify-center"
               >
                 PROCEED TO CHECKOUT
-              </RouterLink>
+              </Button>
             </div>
             <div className="flex flex-col  gap-4 py-2">
               <p>If you have a promo code, enter here.</p>
