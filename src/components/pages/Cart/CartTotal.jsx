@@ -1,12 +1,11 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import { StoreContext } from "../../../context/StoreContext";
 import Button from "../../Button";
 
 import { useNavigate } from "react-router-dom";
 
-const CartTotal = ({proceedTo}) => {
-  const { getCartTotal } =
-    useContext(StoreContext);
+const CartTotal = ({ proceedTo }) => {
+  const { getCartTotal } = useContext(StoreContext);
 
   const formattedUSD = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -19,32 +18,30 @@ const CartTotal = ({proceedTo}) => {
   const deliveryFee = 2;
   const total = subtotal + deliveryFee;
   return (
-    
-      <div className="">
-        <h3 className="text-xl font-bold py-2">Cart Total</h3>
-        <div className="flex items-center py-2 justify-between">
-          <p>Subtotals</p>
-          <p>{formattedUSD.format(subtotal)}</p>
-        </div>
-        <hr className="text-gray-400" />
-        <div className="flex items-center py-2 justify-between">
-          <p>Delivery Fee</p>
-          <p>{formattedUSD.format(deliveryFee)}</p>
-        </div>
-        <hr className="text-gray-400" />
-        <div className="flex items-center py-2 justify-between">
-          <p className="font-bold">Total</p>
-          <p>{formattedUSD.format(total)}</p>
-        </div>
-        <Button
-          onClick={() => navigate("/order")}
-          className="text-white bg-orange-500 px-4 py-2 rounded-lg shadow cursor-pointer
-               hover:scale-105 hover:bg-orange-700 flex items-center justify-center"
-        >
-          {proceedTo}
-        </Button>
+    <div className="">
+      <h3 className="text-xl font-bold py-2">Cart Total</h3>
+      <div className="flex items-center py-2 justify-between">
+        <p>Subtotals</p>
+        <p>{formattedUSD.format(subtotal)}</p>
       </div>
-    
+      <hr className="text-gray-400" />
+      <div className="flex items-center py-2 justify-between">
+        <p>Delivery Fee</p>
+        <p>{subtotal === 0 ? formattedUSD.format(0) : formattedUSD.format(deliveryFee)}</p>
+      </div>
+      <hr className="text-gray-400" />
+      <div className="flex items-center py-2 justify-between">
+        <p className="font-bold">Total</p>
+        <p>{subtotal === 0 ? formattedUSD.format(0) : formattedUSD.format(total)}</p>
+      </div>
+      <Button
+        onClick={() => navigate("/order")}
+        className="text-white bg-orange-500 px-4 py-2 rounded-lg shadow cursor-pointer
+               hover:scale-105 hover:bg-orange-700 flex items-center justify-center"
+      >
+        {proceedTo}
+      </Button>
+    </div>
   );
 };
 

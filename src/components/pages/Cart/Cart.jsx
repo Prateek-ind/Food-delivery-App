@@ -67,8 +67,8 @@ const Cart = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 py-8 mt-4 justify-between">
             <CartTotal proceedTo="PROCEED TO CHECKOUT" />
             <div className="flex flex-col  gap-4 py-2">
-              <p>If you have a promo code, enter here.</p>
-              <div className="flex gap-8">
+              <p>If you have a promo code, Enter here.</p>
+              <div className="flex gap-8 max-w-64">
                 <Input placeHolder="Promo Code" />
                 <Button
                   name="Submit"
