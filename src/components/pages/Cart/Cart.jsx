@@ -20,7 +20,7 @@ const Cart = () => {
   const total = subtotal + deliveryFee;
 
   return (
-    <div className="pt-20 mt-24 w-full max-w-6xl mx-auto flex items-center justify-center">
+    <div className="pt-20 mt-24 w-full max-w-6xl mx-auto flex flex-col min-h-screen items-center justify-center">
       {Object.values(cartItems).reduce((a, b) => a + b, 0) > 0 ? (
         <div className="w-full px-4">
           <div className=" grid grid-cols-6 items-center gap-4 justify-center text-center font-semibold py-2">

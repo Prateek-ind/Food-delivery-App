@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <footer
       id="contact-us"
-      className="bg-neutral-900 text-gray-200 p-8 mt-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg"
+      className="bg-neutral-900 text-gray-200  py-8  max-w-full mx-auto px-4 sm:px-6 lg:px-8 "
     >
-      <div className="w-full flex justify-between">
+      <div className="max-w-6xl mx-auto flex justify-between">
         <div className="w-48 sm:w-96">
           <img src={assets.logo} className="py-2 w-24 sm:w-48" alt="" />
           <p className="py-2 text-xs sm:text-sm">
